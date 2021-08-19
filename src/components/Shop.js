@@ -2,13 +2,10 @@ import React, { useEffect } from 'react';
 import { getRecords } from '../helpers/apiCalls';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import Record from './Record';
 
 const Shop = () => {
-  // componentDidMount
-  // ComponentdidUpdate
-  // ComponentwillUnmount
-
-  const { setRecords } = useContext(UserContext);
+  const { records, setRecords } = useContext(UserContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -19,7 +16,11 @@ const Shop = () => {
     getData();
   }, [setRecords]);
 
-  return <div>I AM THE SHOP</div>;
+  const recordsList = records.map(record => {
+    return <Record data={record}  key={record.mbid}></Record>;
+  });
+
+  return <section className="page-wrapper" id="shop-grid">{recordsList}</section>;
 };
 
 export default Shop;

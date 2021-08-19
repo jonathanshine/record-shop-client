@@ -8,10 +8,10 @@ const Navigation = () => {
       </div>
 
       <div className='menu'>
-        <NavLink to='/' activeClassName='selected'>
-          Home
+        <NavLink exact to='/' activeClassName='active'>
+          Home 
         </NavLink>
-        <NavLink to='/shop'>Shop</NavLink>
+        <NavLink exact to='/shop' activeClassName='active'>Shop</NavLink>
       </div>
     </div>
   );

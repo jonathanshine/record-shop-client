@@ -6,7 +6,7 @@ import '../sass/App.scss';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <Router>
         <Navigation></Navigation>
         <Switch>
