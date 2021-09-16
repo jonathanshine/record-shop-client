@@ -87,8 +87,20 @@ body,
     grid-template-columns: repeat(4, auto);
     grid-gap: 20px;
     .record {
+      position: relative;
+
       img {
         width: 100%;
+      }
+
+      .add-button {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        color: white;
+        background-color: black;
+        padding: 10px;
+        font-size: 30px;
       }
     }
   }
