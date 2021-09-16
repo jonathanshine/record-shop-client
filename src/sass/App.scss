@@ -31,6 +31,10 @@ body,
       }
     }
     .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
       a {
         margin: 0 10px;
         color: black;
@@ -40,12 +44,37 @@ body,
       a.active {
         text-decoration: underline;
       }
+
+      .avatar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          border: 2px solid black;
+        }
+      }
     }
   }
   .page-wrapper {
     padding: 40px 20px;
     height: calc(100vh - 60px);
     overflow: auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+
+      input {
+        margin-bottom: 20px;
+      }
+    }
+
   }
 
   #landing-page {

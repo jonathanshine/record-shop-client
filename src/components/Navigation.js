@@ -25,8 +25,11 @@ const Navigation = () => {
         </>
         ) : (
           <>
-            <NavLink exact to='/profile/:id' activeClassName='active'>{user.firstName}</NavLink>
             <NavLink exact to='/profile/:id/orders' activeClassName='active'>Orders</NavLink>
+            <NavLink exact to='/profile/:id' activeClassName='active' className="avatar">
+              <img src="https://www.w3schools.com/howto/img_avatar.png"  />
+              <small>{user.firstName}</small>
+              </NavLink>
           </>
         )}
         
