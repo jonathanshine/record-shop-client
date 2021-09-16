@@ -7,6 +7,8 @@ import Login from './Login';
 import UserProfile from './UserProfile';
 import SignUp from './SignUp';
 import UserOrders from './UserOrders';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route  exact path='/profile/:id/orders' component={UserOrders} />
         </Switch>
       </Router>
+      <ToastContainer/> {/* this component allows us to use toasts throughout our app */}
     </div>
   );
 }

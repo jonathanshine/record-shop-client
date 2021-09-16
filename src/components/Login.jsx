@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SignInUser } from "../helpers/apiCalls"
 import { useForm } from "react-hook-form";
+import { UserContext } from "../context/UserContext";
+import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 
 const Login = () => {
-    
+    const { setUser } = useContext( UserContext );
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const history = useHistory();
     
     const onSubmit = async (data) => {
         const res = await SignInUser( data );
-        if(res.error) console.log(res.error);
-        // else redirect the logged in user
+        if(!res.error) {
+            setUser( res );
+            history.push("/shop");
+        } else {
+            // this toast will pop up with whatever error arises from an invalid login inputs 
+            toast(`Unicorn! --> ${res.error.message}`)
+        }
     };
 
     return (
