@@ -3,6 +3,10 @@ import Navigation from './Navigation';
 import LandingPage from './LandingPage';
 import Shop from './Shop';
 import '../sass/App.scss';
+import Login from './Login';
+import UserProfile from './UserProfile';
+import SignUp from './SignUp';
+import UserOrders from './UserOrders';
 
 function App() {
   return (
@@ -12,6 +16,10 @@ function App() {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route  exact path='/shop' component={Shop} />
+          <Route  exact path='/login' component={Login} />
+          <Route  exact path='/signup' component={SignUp} />
+          <Route  exact path='/profile/:id' component={UserProfile} />
+          <Route  exact path='/profile/:id/orders' component={UserOrders} />
         </Switch>
       </Router>
     </div>

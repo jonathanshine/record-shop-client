@@ -12,6 +12,10 @@ const Navigation = () => {
           Home 
         </NavLink>
         <NavLink exact to='/shop' activeClassName='active'>Shop</NavLink>
+        <NavLink exact to='/login' activeClassName='active'>Login</NavLink>
+        <NavLink exact to='/signup' activeClassName='active'>Signup</NavLink>
+        <NavLink exact to='/profile/:id' activeClassName='active'>User Profile</NavLink>
+        <NavLink exact to='/profile/:id/orders' activeClassName='active'>User Orders</NavLink>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-const serverUrl = 'https://stupid-server.vercel.app';
+const serverUrl = 'http://localhost:5000';
 
 export const getRecords = async () => {
   try {
