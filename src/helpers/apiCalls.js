@@ -8,3 +8,12 @@ export const getRecords = async () => {
     return error;
   }
 };
+
+export const SignInUser = async (data) => {
+  try {
+    const res = await(await fetch(`${serverUrl}/users/login`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data )})).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
