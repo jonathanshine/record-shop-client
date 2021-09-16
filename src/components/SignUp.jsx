@@ -20,26 +20,31 @@ const SignUp = () => {
             toast(`Unicorn! --> ${res.error.message}`)
         }
     };
-    console.log(errors);
+    
 
     return (
         <section className="page-wrapper">
            <h5>Sign Up</h5>
            
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder="firstName" {...register("firstName", {required: true})} />
+                <label htmlFor="firstName">First Name: </label>
+                <input id="firstName" name="firstName" type="text" placeholder="firstName" {...register("firstName", {required: true})} />
                 {errors.firstName && <span>First Name is required</span>}
 
-                <input type="text" placeholder="lastName" {...register("lastName", {required: true})} />
+                <label htmlFor="lastName">Last Name: </label>
+                <input id="lastName" name="lastName" type="text" placeholder="lastName" {...register("lastName", {required: true})} />
                 {errors.lastName && <span>Last Name is required</span>}
 
-                <input type="text" placeholder="username" {...register("username", {required: true})} />
+                <label htmlFor="username">Username: </label>
+                <input id="username" name="username" type="text" placeholder="username" {...register("username", {required: true})} />
                 {errors.username && <span>Username is required</span>}
 
-                <input type="email" placeholder="email" {...register("email", {required: true})} />
+                <label htmlFor="signUpEmail">Email: </label>
+                <input id="signUpEmail" name="signUpEmail" type="email" placeholder="email" {...register("email", {required: true})} />
                 {errors.email && <span>Email is required</span>}
 
-                <input type="password" placeholder="password" {...register("password", {required: true})} />
+                <label htmlFor="signUpPassword">Password: </label>
+                <input id="signUpPassword" name="signUpPassword" type="password" placeholder="password" {...register("password", {required: true})} />
                 {errors.password && <span>Password is required</span>}
 
                 <input type="submit" />

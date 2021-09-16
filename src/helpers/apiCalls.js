@@ -31,3 +31,19 @@ export const SignUpUser = async (data) => {
     return error;
   }
 };
+
+export const updateUser = async (data) => {
+  console.log("DATA", data);
+
+  try {
+    const res = await(await fetch(`${serverUrl}/users/${data._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart:data.cart })
+    })
+    ).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};

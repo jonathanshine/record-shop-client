@@ -1,33 +1,42 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/UserContext';
+import { updateUser } from '../helpers/apiCalls';
+import { toast } from 'react-toastify';
 
 const Record = ({data}) => {
     const { user, setUser } = useContext(UserContext);
 
-    const addRecordToCart = (id) => {
-        
+    const addRecordToCart = async (id) => {
+        // use find to check if the record with the given id being passed onCLick is already in the user's cart array
         let recordExists = user.cart.find(item => item.record === id);
 
+        // declare empty array for cart to be updated
+        let updatedCart = [];
         if(recordExists) {
-        const updatedCart = user.cart.map((item) => {
-            if(item.record === id) {
-                return {...item, quantity: item.quantity + 1 };
-            } else {
-                return item;
-            };    
-        });
-        setUser({...user, cart: updatedCart});
+            // if record is found, map over user cart
+            updatedCart = user.cart.map((item) => {
+                // if map finds a record with the given id, then it adds 1 to the quantity field, else it returns the complete record info
+                if(item.record === id) {
+                    return {...item, quantity: item.quantity + 1 };
+                } else {
+                    return item;
+                };    
+            });
+            // setUser with the updatedCart variable
+            setUser({...user, cart: updatedCart});
         }
         else {
-            // create temporary cart
-            let newCart = [...user.cart, { record: id, quantity: 1 }];
-    
-            // add the id of the record to the cart inside the user object
-            setUser({ ...user, cart: newCart });
+            // if record is NOT found update the user's cart setting the record with the id passed in to the function and setting the quantity to 1
+            updatedCart = [...user.cart, { record: id, quantity: 1 }];
+        };
+        
+        // assign the updatedCart to the user's cart in the backend database
+        let res = await updateUser({ ...user, cart: updatedCart});
+        if(!res.error) setUser({ ...user, cart: updatedCart });
+        else {
+            toast(`${res.error.message}`)
         }
     };
-    
-    console.log(user?.cart);
 
     return (
         <div className="record">

@@ -25,12 +25,12 @@ const Login = () => {
         <section className="page-wrapper">
             <h5>Login</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("email", { required: true})} />
+                <label htmlFor="loginEmail">Email: </label>
+                <input id="loginEmail" name="loginEmail" {...register("email", { required: true})} />
                 {errors.email && <span>Email is required</span>}
-
                 
-                <input {...register("password", { required: true })} />
-                
+                <label htmlFor="loginPassword">Password: </label>
+                <input id="loginPassword" name="loginPassword" {...register("password", { required: true })} />
                 {errors.password && <span>Password is required</span>}
                 
                 <input type="submit" />
