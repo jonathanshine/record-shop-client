@@ -39,7 +39,7 @@ export const updateUser = async (data) => {
     const res = await(await fetch(`${serverUrl}/users/${data._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart:data.cart })
+      body: JSON.stringify({ cart: data.cart })
     })
     ).json();
     return res;
@@ -47,3 +47,18 @@ export const updateUser = async (data) => {
     return error;
   }
 };
+
+export const createOrder = async (data) => {
+  try {
+    const res = await (
+      await fetch(`${serverUrl}/users/${data.userId}/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify( data )
+      })
+    ).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+}

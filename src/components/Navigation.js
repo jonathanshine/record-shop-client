@@ -4,6 +4,9 @@ import { UserContext } from '../context/UserContext';
 
 const Navigation = () => {
   const { user } = useContext( UserContext );
+  const amountOfItems = user?.cart.reduce((agg, record) => {
+    return agg + record.quantity;
+  }, 0)
 
   return (
     <div className='navigation'>
@@ -26,6 +29,7 @@ const Navigation = () => {
         ) : (
           <>
             <NavLink exact to='/profile/:id/orders' activeClassName='active'>Orders</NavLink>
+            <NavLink exact to='/profile/:id/cart' activeClassName='active'>Cart ({ amountOfItems })</NavLink>
             <NavLink exact to='/profile/:id' activeClassName='active' className="avatar">
               <img src="https://www.w3schools.com/howto/img_avatar.png"  />
               <small>{user.firstName}</small>

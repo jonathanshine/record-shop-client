@@ -32,7 +32,7 @@ const Record = ({data}) => {
         
         // assign the updatedCart to the user's cart in the backend database
         let res = await updateUser({ ...user, cart: updatedCart});
-        if(!res.error) setUser({ ...user, cart: updatedCart });
+        if(!res.error) setUser({ ...user, cart: res.cart });
         else {
             toast(`${res.error.message}`)
         }

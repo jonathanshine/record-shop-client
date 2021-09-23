@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [records, setRecords] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
 
   return (

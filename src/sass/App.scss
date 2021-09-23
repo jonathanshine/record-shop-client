@@ -104,4 +104,45 @@ body,
       }
     }
   }
+
+  #cart {
+    .cart-button {
+      background: rgb(94, 150, 187);
+      text-align: center;
+      padding: 10px;
+      color: white;
+    }
+
+    .cart-container {
+      max-height: 400px;
+      padding: 10px;
+      background-color: lightgrey;
+      overflow: auto;
+      margin-bottom: 10px;
+    }
+    
+    .item {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .cover {
+        margin-right: 10px;
+
+        img {
+          height: 120px;
+        }
+      }
+
+      .info {
+      
+        p {
+          margin-top: 0;
+          font-size: small;
+        }
+      }
+    }
+  }
+
 }
