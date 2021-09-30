@@ -10,6 +10,7 @@ import UserOrders from './UserOrders';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cart from './Cart';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
           <Route  exact path='/shop' component={Shop} />
           <Route  exact path='/login' component={Login} />
           <Route  exact path='/signup' component={SignUp} />
-          <Route  exact path='/profile/:id' component={UserProfile} />
-          <Route exact path='/profile/:id/cart' component={Cart} />
-          <Route  exact path='/profile/:id/orders' component={UserOrders} />
+          <PrivateRoute exact path='/profile/:id' component={UserProfile} />
+          <PrivateRoute exact path='/profile/:id/cart' component={Cart} />
+          <PrivateRoute exact path='/profile/:id/orders' component={UserOrders} />
         </Switch>
       </Router>
       <ToastContainer/> {/* this component allows us to use toasts throughout our app */}

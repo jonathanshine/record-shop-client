@@ -69,3 +69,18 @@ export const createOrder = async (data) => {
     return error;
   }
 }
+
+export const authenticateUser = async () => {
+  try {
+    const res = await (
+      await fetch(`${serverUrl}/users/auth`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        credentials: "include"
+      })
+    ).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+}
