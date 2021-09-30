@@ -2,7 +2,7 @@ const serverUrl = 'http://localhost:5000';
 
 export const getRecords = async () => {
   try {
-    const data = await(await fetch(`${serverUrl}/records`)).json();
+    const data = await(await fetch(`${serverUrl}/records`, { credentials: "include"})).json();
     return data;
   } catch (error) {
     return error;
@@ -11,7 +11,12 @@ export const getRecords = async () => {
 
 export const SignInUser = async (data) => {
   try {
-    const res = await(await fetch(`${serverUrl}/users/login`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data )})).json();
+    const res = await(await fetch(`${serverUrl}/users/login`, { 
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      credentials: "include"
+    })).json();
     return res;
   } catch (error) {
     return error;
@@ -23,9 +28,9 @@ export const SignUpUser = async (data) => {
     const res = await(await fetch(`${serverUrl}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    ).json();
+      body: JSON.stringify(data),
+      credentials: "include"
+    })).json();
     return res;
   } catch (error) {
     return error;
@@ -39,7 +44,8 @@ export const updateUser = async (data) => {
     const res = await(await fetch(`${serverUrl}/users/${data._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart: data.cart })
+      body: JSON.stringify({ cart: data.cart }),
+      credentials: "include"
     })
     ).json();
     return res;
@@ -54,7 +60,8 @@ export const createOrder = async (data) => {
       await fetch(`${serverUrl}/users/${data.userId}/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
-        body: JSON.stringify( data )
+        body: JSON.stringify( data ),
+        credentials: "include"
       })
     ).json();
     return res;
