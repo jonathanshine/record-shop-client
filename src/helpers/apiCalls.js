@@ -84,3 +84,18 @@ export const authenticateUser = async () => {
     return error;
   }
 }
+
+export const authenticateAccount = async (token) => {
+  try {
+    const res = await (
+      await fetch(`${serverUrl}/users/verify-email/${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        credentials: "include"
+      })
+    ).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+}
