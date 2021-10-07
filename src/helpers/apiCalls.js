@@ -98,4 +98,20 @@ export const authenticateAccount = async (token) => {
   } catch (error) {
     return error;
   }
-}
+};
+
+
+export const googleSignUp = async (data) => {
+  try {
+    const res = await(
+      await fetch(`${serverUrl}/users/googleSignUp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        credentials: "include"
+    })).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
